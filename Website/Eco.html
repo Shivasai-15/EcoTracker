@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coal Analysis & Emission Tracking</title>
+    <link rel="stylesheet" href="Eco.css">
+</head>
+<body>
+
+    <header>
+        <h1>Coal Analysis & Emission Tracking</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="#">Data Input</a></li>
+            <li><a href="analytics.html">Analytics</a></li>
+            <li><a href="benchmarking.html">Benchmarking</a></li>
+            <li><a href="reduction.html">Reduction Pathways</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="data-input">
+            <h2>Data Input</h2>
+
+            <form id="data-form">
+                <div class="form-group">
+                    <label for="energy-consumption">Energy Consumption (kWh):</label>
+                    <input type="number" id="energy-consumption" name="energy-consumption" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="fuel-usage">Fuel Usage (Liters):</label>
+                    <input type="number" id="fuel-usage" name="fuel-usage" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="coal-production">Coal Production (Tons):</label>
+                    <input type="number" id="coal-production" name="coal-production" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="transportation-distance">Transportation Distance (Km):</label>
+                    <input type="number" id="transportation-distance" name="transportation-distance" required>
+                </div>
+
+                <button type="button" id="submit-btn">Submit Data</button>
+            </form>
+
+            <!-- Output Section for Carbon Footprint -->
+            <div id="carbon-footprint-output">
+                <h3>Total Carbon Footprint: <span id="total-footprint">0</span> kg CO₂</h3>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer>
+        <p>© 2024 EcoMines Project | <a href="mailto:contact@ecomines.com">contact@ecomines.com</a></p>
+    </footer>
+
+    <script>
+        document.getElementById('submit-btn').addEventListener('click', async () => {
+            const formData = {
+                energyConsumption: parseFloat(document.getElementById('energy-consumption').value),
+                fuelUsage: parseFloat(document.getElementById('fuel-usage').value),
+                coalProduction: parseFloat(document.getElementById('coal-production').value),
+                transportationDistance: parseFloat(document.getElementById('transportation-distance').value)
+            };
+
+            // Check if all inputs are provided and valid
+            if (isNaN(formData.energyConsumption) || isNaN(formData.fuelUsage) ||
+                isNaN(formData.coalProduction) || isNaN(formData.transportationDistance)) {
+                alert('Please fill in all fields with valid numbers.');
+                return;
+            }
+
+            // Calculate Total Carbon Footprint
+            const energyCarbon = formData.energyConsumption * 0.5;   // 0.5 kg CO₂/kWh
+            const fuelCarbon = formData.fuelUsage * 2.3;             // 2.3 kg CO₂/L
+            const coalCarbon = formData.coalProduction * 2.5;        // 2.5 kg CO₂/ton
+            const transportationCarbon = formData.transportationDistance * 0.1; // 0.1 kg CO₂/km
+
+            const totalCarbonFootprint = energyCarbon + fuelCarbon + coalCarbon + transportationCarbon;
+
+            // Display the result
+            document.getElementById('total-footprint').innerText = totalCarbonFootprint.toFixed(2);
+
+            try {
+                const response = await fetch('http://localhost:3000/api/data', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert(result.message);
+                } else {
+                    alert('Failed to save data.');
+                }
+            } catch (error) {
+                console.error('Network Error:', error);
+                alert('An error occurred.');
+            }
+        });
+    </script>
+
+</body>
+</html>

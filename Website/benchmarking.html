@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benchmarking - Emissions Comparison</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff9800;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #444;
+        }
+
+        th, td {
+            padding: 10px;
+        }
+
+        th {
+            background-color: #1e1e1e;
+        }
+
+        tr:nth-child(even) {
+            background-color: #1c1c1c;
+        }
+
+        .btn {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Benchmarking Emission Metrics</h1>
+
+    <div class="container">
+        <h2>Comparison Table</h2>
+        <table id="benchmarkTable">
+            <tr>
+                <th>Timestamp</th>
+                <th>Energy Consumption (kWh)</th>
+                <th>Fuel Usage (Liters)</th>
+                <th>Coal Production (Tons)</th>
+                <th>Transportation Distance (Km)</th>
+            </tr>
+        </table>
+
+        <canvas id="benchmarkChart" width="600" height="400" style="margin-top: 30px;"></canvas>
+    </div>
+
+    <script>
+        async function fetchBenchmarkData() {
+            try {
+                const response = await fetch('http://localhost:3000/api/benchmark');
+                const data = await response.json();
+
+                const timestamps = data.map(item => item.timestamp);
+                const energyConsumption = data.map(item => item.energyConsumption);
+                const fuelUsage = data.map(item => item.fuelUsage);
+                const coalProduction = data.map(item => item.coalProduction);
+                const transportationDistance = data.map(item => item.transportationDistance);
+
+                // Populate the HTML table with data
+                const table = document.getElementById('benchmarkTable');
+
+                data.forEach(item => {
+                    const row = table.insertRow();
+                    row.insertCell(0).innerText = item.timestamp;
+                    row.insertCell(1).innerText = item.energyConsumption;
+                    row.insertCell(2).innerText = item.fuelUsage;
+                    row.insertCell(3).innerText = item.coalProduction;
+                    row.insertCell(4).innerText = item.transportationDistance;
+                });
+
+                // Create a comparison chart using Chart.js
+                const ctx = document.getElementById('benchmarkChart').getContext('2d');
+
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: timestamps,
+                        datasets: [
+                            {
+                                label: 'Energy Consumption (kWh)',
+                                data: energyConsumption,
+                                backgroundColor: 'rgba(255, 99, 132, 0.6)'
+                            },
+                            {
+                                label: 'Fuel Usage (Liters)',
+                                data: fuelUsage,
+                                backgroundColor: 'rgba(54, 162, 235, 0.6)'
+                            },
+                            {
+                                label: 'Coal Production (Tons)',
+                                data: coalProduction,
+                                backgroundColor: 'rgba(255, 206, 86, 0.6)'
+                            },
+                            {
+                                label: 'Transportation Distance (Km)',
+                                data: transportationDistance,
+                                backgroundColor: 'rgba(75, 192, 192, 0.6)'
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            x: {
+                                ticks: {
+                                    color: '#fff'
+                                }
+                            },
+                            y: {
+                                ticks: {
+                                    color: '#fff'
+                                },
+                                grid: {
+                                    color: '#444'
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    color: '#fff'
+                                }
+                            }
+                        }
+                    }
+                });
+                
+            } catch (err) {
+                console.error('Failed to load benchmark data', err);
+                alert('Failed to load benchmarking data.');
+            }
+        }
+
+        // Load benchmarking data when the page loads
+        fetchBenchmarkData();
+    </script>
+
+</body>
+</html>

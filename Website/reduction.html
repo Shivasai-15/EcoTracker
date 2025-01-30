@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reduction Pathways</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ff9800;
+        }
+
+        .form-group {
+            margin: 15px 0;
+        }
+
+        input, select, button {
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        input {
+            background-color: #1e1e1e;
+            color: #fff;
+        }
+
+        input:focus {
+            border: 1px solid #ff9800;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .result-container {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .result-container h2 {
+            color: #ff9800;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reduction Pathways</h1>
+
+    <div class="form-group">
+        <label for="currentEmissions">Current Emissions (Tons CO₂):</label>
+        <input type="number" id="currentEmissions" placeholder="Enter your current emissions">
+    </div>
+
+    <div class="form-group">
+        <label for="targetEmissions">Target Emissions (Tons CO₂):</label>
+        <input type="number" id="targetEmissions" placeholder="Enter your target emissions">
+    </div>
+
+    <button onclick="fetchReductionPathways()">Get Reduction Pathways</button>
+
+    <div class="result-container" id="resultContainer" style="display: none;">
+        <h2>Recommended Strategies</h2>
+        <ul id="reductionStrategies"></ul>
+    </div>
+
+    <script>
+        async function fetchReductionPathways() {
+            const currentEmissions = parseFloat(document.getElementById('currentEmissions').value);
+            const targetEmissions = parseFloat(document.getElementById('targetEmissions').value);
+
+            if (isNaN(currentEmissions) || isNaN(targetEmissions) || currentEmissions <= 0 || targetEmissions <= 0 || targetEmissions >= currentEmissions) {
+                alert('Please enter valid emissions data. Target must be less than current emissions.');
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:3000/api/reduction-pathways', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ currentEmissions, targetEmissions })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    const resultContainer = document.getElementById('resultContainer');
+                    const reductionStrategies = document.getElementById('reductionStrategies');
+
+                    // Clear existing strategies
+                    reductionStrategies.innerHTML = '';
+
+                    // Populate strategies
+                    data.strategies.forEach(strategy => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = strategy;
+                        reductionStrategies.appendChild(listItem);
+                    });
+
+                    resultContainer.style.display = 'block';
+                } else {
+                    alert('Failed to fetch reduction pathways.');
+                }
+            } catch (error) {
+                console.error('Error fetching reduction pathways:', error);
+                alert('An error occurred while fetching reduction pathways.');
+            }
+        }
+    </script>
+</body>
+</html>
