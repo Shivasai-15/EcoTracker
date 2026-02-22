@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +10,40 @@
         body {
             background-color: #121212;
             color: #e0e0e0;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
         }
+
+        header {
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #fff;
+            color: #2a5298;
+        }
+
         .login-container {
             background-color: #1e1e1e;
             padding: 40px;
@@ -22,7 +55,7 @@
 
         .login-container h2 {
             text-align: center;
-            color: #ff9800;
+            color: #ffd700;
             font-weight: bold;
         }
 
@@ -41,13 +74,13 @@
 
         .input-container input:focus {
             outline: none;
-            border-color: #ff9800;
+            border-color: #ffd700;
         }
 
         .btn {
             width: 100%;
             padding: 15px;
-            background-color: #28a745;
+            background-color: #00bcd4;
             color: #fff;
             font-weight: bold;
             border: none;
@@ -57,7 +90,7 @@
         }
 
         .btn:hover {
-            background-color: #218838;
+            background-color: #0097a7;
         }
 
         .signup-link {
@@ -78,6 +111,16 @@
 </head>
 
 <body>
+    <header>
+        <h1>Eco Mines</h1>
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="AboutUs.html">About Us</a>
+            <a href="Eco.html">Data Input</a>
+            <a href="ContactUs.html">Contact Us</a>
+        </nav>
+    </header>
+
     <div class="login-container">
         <h2>Login</h2>
 
@@ -97,41 +140,38 @@
 
         <p class="signup-link">Don't have an account? <a href="signup.html">Sign up</a></p>
     </div>
+
     <script>
-    async function loginUser() {
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
+        async function loginUser() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
 
-        try {
-            const response = await fetch('http://localhost:3000/api/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username, password })
-            });
+            try {
+                const response = await fetch('http://localhost:3000/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
 
-            const result = await response.json();
+                const result = await response.json();
 
-            if (response.ok) {
-               // alert(result.message);
-
-                // Set login status in sessionStorage
-                sessionStorage.setItem('isLoggedIn', 'true');
-
-                // Redirect to the homepage
-                window.location.href = 'home.html';
-            } else {
-                alert(`Login Error: ${result.error}`);
+                if (response.ok) {
+                    sessionStorage.setItem('isLoggedIn', 'true');
+                    window.location.href = 'home.html';
+                } else {
+                    alert(`Login Error: ${result.error}`);
+                }
+            } catch (error) {
+                console.error('Server connection error:', error);
+                alert('Internal Server Error');
             }
-        } catch (error) {
-            console.error('Server connection error:', error);
-            alert('Internal Server Error');
         }
-    }
 
-    document.getElementById('loginForm').addEventListener('submit', (e) => {
-        e.preventDefault();
-        loginUser();
-    });
-</script>
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            loginUser();
+        });
+    </script>
 </body>
+
 </html>

@@ -1,145 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <title>Contact Us - Eco Mines</title>
-    <style>
-        body {
-            background-color: #121212; /* Dark background */
-            color: #e0e0e0;
-            font-family: Arial, sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us - Eco Mines</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
 
-        header {
-            background-color: #1c1c1c;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 4px solid #00bcd4; /* Cyan accent */
-        }
+    header {
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        header h1 {
-            margin: 0;
-            font-size: 2rem;
-            color: #00bcd4;
-        }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #fff;
+    }
 
-        nav {
-            display: flex;
-            gap: 15px;
-        }
+    nav {
+      display: flex;
+      gap: 15px;
+    }
 
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
 
-        nav a:hover {
-            background-color: #00bcd4;
-            color: #000;
-        }
+    nav a:hover,
+    nav a.active {
+      background-color: #fff;
+      color: #2a5298;
+    }
 
-        .container-custom {
-            padding: 20px;
-            background-color: #1e1e1e;
-            border-radius: 8px;
-            margin: 20px auto;
-            max-width: 600px;
-        }
+    .container-custom {
+      padding: 40px 20px;
+      background: linear-gradient(to right, #2c3e50, #4ca1af);
+      border-radius: 8px;
+      margin: 30px auto;
+      max-width: 700px;
+    }
 
-        .btn-primary {
-            background-color: #00bcd4;
-            border-color: #00bcd4;
-        }
+    h2 {
+      font-size: 2rem;
+      color: #ffd700;
+      margin-bottom: 20px;
+    }
 
-        .btn-primary:hover {
-            background-color: #0097a7;
-            border-color: #0097a7;
-        }
+    .form-control {
+      background-color: #252525;
+      color: #fff;
+    }
 
-        .form-control {
-            background-color: #252525;
-            color: #fff;
-        }
+    .form-control::placeholder {
+      color: #b3b3b3;
+    }
 
-        .form-control::placeholder {
-            color: #b3b3b3;
-        }
+    .btn-primary {
+      background-color: #00bcd4;
+      border-color: #00bcd4;
+    }
 
-        footer {
-            background-color: #1c1c1c;
-            color: #808080;
-            padding: 10px;
-            text-align: center;
-        }
+    .btn-primary:hover {
+      background-color: #0097a7;
+      border-color: #0097a7;
+    }
 
-        footer a {
-            color: #00bcd4;
-            text-decoration: none;
-        }
+    footer {
+      background-color: #1c1c1c;
+      color: #808080;
+      padding: 20px;
+      text-align: center;
+    }
 
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    footer a {
+      color: #00bcd4;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 
 <body>
-
-<header>
+  <header>
     <h1>Eco Mines</h1>
     <nav>
-        <a href="home.html">Home</a>
-        <a href="AboutUs.html">About Us</a>
-        <a href="Eco.html">Data Input</a>
-        <a href="ContactUs.html">Contact Us</a>
+      <a href="home.html">Home</a>
+      <a href="AboutUs.html">About Us</a>
+      <a href="Eco.html">Data Input</a>
+      <a href="ContactUs.html" class="active">Contact Us</a>
     </nav>
-</header>
+  </header>
 
-<div class="container-custom">
+  <div class="container-custom">
     <h2>Contact Us</h2>
 
     <form>
-        <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
-        </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+      </div>
 
-        <div class="form-group">
-            <label>Are you a member?</label>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="membership" id="yes" value="yes" checked>
-                <label class="form-check-label" for="yes">Yes</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="membership" id="no" value="no">
-                <label class="form-check-label" for="no">No</label>
-            </div>
+      <div class="form-group">
+        <label>Are you a member?</label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="membership" id="yes" value="yes" checked>
+          <label class="form-check-label" for="yes">Yes</label>
         </div>
-
-        <div class="form-group">
-            <label for="feedback">Feedback</label>
-            <textarea class="form-control" id="feedback" rows="4" placeholder="Share your thoughts..."></textarea>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="membership" id="no" value="no">
+          <label class="form-check-label" for="no">No</label>
         </div>
+      </div>
 
-        <button type="submit" class="btn btn-primary btn-block mt-2">Submit</button>
+      <div class="form-group">
+        <label for="feedback">Feedback</label>
+        <textarea class="form-control" id="feedback" rows="4" placeholder="Share your thoughts..."></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block mt-2">Submit</button>
     </form>
-</div>
+  </div>
 
-<footer>
+  <footer>
     <p>&copy; 2023 Eco Mines. All rights reserved. | <a href="#">Privacy</a> · <a href="#">Terms</a></p>
-</footer>
+  </footer>
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
-
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
 </body>
+
 </html>

@@ -1,213 +1,186 @@
-/* General Reset */
+/* Global Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-/* Body Styling */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f8fdf5;
-    color: #333;
-}
-
-/* Main Container */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Navigation Bar */
-nav {
-    background-color:#1f1f1f;
-    padding: 15px 0;
+  }
+  
+  body, html {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #121212;
+    color: #fff;
+  }
+  
+  /* Header */
+  header {
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
-}
-
-/* Center Eco Mines heading */
-nav h1 { /* Orange hover */
-    color:#00bcd4 ; /* White text for the title */
-    font-size: 60px;
-    font-weight: bold;
+    flex-wrap: wrap;
+  }
+  
+  header h1 {
+    font-size: 2rem;
     margin: 0;
-    text-align: center;
-    flex-grow: 1;
-    padding-left: 100px;
-}
-
-/* Move navigation links to the right */
-.nav-right {
+    color: #fff;
+  }
+  
+  nav {
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: flex-end;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    margin-right: 20px;
-    padding: 8px 6px;
-}
-
-nav ul li a {
-    font-size: large;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  
+  nav a {
+    color: #fff;
     text-decoration: none;
-    color: white; /* White text color for links */
     font-weight: bold;
-}
-
-nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 8px 12px;
     border-radius: 5px;
-    border: 2px solid black;
-    padding: 8px 8px;
-}
-
-/* Right-aligned login and contact buttons */
-.nav-right .login {
+    transition: background 0.3s;
+  }
+  
+  nav a:hover {
     background-color: #fff;
-    color: #00bcd4; /* Green text for login button */
-    border-radius: 5px;
-    border: 4px solid #00bcd4;
-    padding: 8px 18px;
-    margin-right: 20px;
-    text-decoration: none;
-}
-
-.contact-btn {
-    background-color: #00bcd4; /* Darker green for contact button */
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-/* Main Section (Header with Image) */
-header {
-    background: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.britannica.com%2F49%2F147649-050-F4D05E31%2FTavantolgoi-coal-mine-Gobi-Mongolia.jpg&f=1&nofb=1&ipt=a62ca0bb978279219ad593062052cc9a49f6f7e3aa07fad88fa08fc673749c4d&ipo=images') no-repeat center center/cover;
-    background-size: cover;
-    height: 100vh;
+    color: #2a5298;
+  }
+  
+  /* Hero */
+  #hero {
+    background: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb") center/cover no-repeat;
+    text-align: center;
+    padding: 100px 20px;
+    text-shadow: 2px 2px 6px #000;
+  }
+  
+  /* Hero Text */
+  #hero h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  
+  #hero p {
+    font-size: 1.5rem;
+  }
+  
+  /* Sections */
+  .gradient-section {
+    padding: 60px 20px;
+  }
+  
+  .gradient-section.blue {
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
+  }
+  
+  .gradient-section.purple {
+    background: linear-gradient(to right, #8e44ad, #3498db);
+  }
+  
+  .gradient-section.green {
+    background: linear-gradient(to right, #00c9ff, #92fe9d);
+    color: #000;
+  }
+  
+  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+  }
+  
+  /* Content Pair Layout */
+  .content-pair {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
-    position: relative;
-}
-
-/* Overlay for header */
-header::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.4); /* Adjust opacity */
-    z-index: 1;
-}
-
-.main-content {
-    display: flex;
-    flex-direction: column;
+    gap: 40px;
     align-items: center;
+  }
+  
+  .content-pair.reverse {
+    flex-direction: row-reverse;
+  }
+  
+  .text-block, .image-block {
+    flex: 1 1 400px;
+    max-width: 600px;
+    padding: 10px;
+  }
+  
+  .text-block h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ffd700;
+  }
+  
+  .text-block p,
+  .text-block ul,
+  .text-block ol {
+    font-size: 1.2rem;
+    color: #f0f8ff;
+  }
+  
+  .text-block ul, .text-block ol {
+    text-align: left;
+    padding-left: 20px;
+  }
+  
+  .image-block img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+  }
+  
+  /* Statistics Cards */
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .stat {
+    background: linear-gradient(135deg, #43cea2, #185a9d);
+    padding: 20px;
+    border-radius: 12px;
+    flex: 1 1 250px;
+    color: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
     text-align: center;
-    color: white;
-    z-index: 2;
-}
-
-.text-content {
-    max-width: 50%;
-    color: white;
-    z-index: 2;
-}
-
-.text-content .tagline {
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-.text-content .description {
-    line-height: 1.6;
-    font-weight: bold;
-}
-
-.buttons {
-    margin-top: 30px;
-}
-
-.buttons .btn {
-    padding: 10px 25px;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-right: 15px;
-    font-weight: bold;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.btn-primary {
-    background-color: #00bcd4; /* Green button */
-    color: white;
-}
-
-.btn-primary:hover {
-    background-color: #00bcd4;
-}
-.btn-secondary {
-    border: 4px solid #00bcd4;
-    color: white;
-    background: none;
-}
-
-.btn-secondary:hover {
-    border: 4px solid #00bcd4;
-    color: white;
-}
-
-/* Features Section */
-.features {
-    margin-top: 40px;
-    font-size: 1.1em;
-}
-
-/* Footer */
-footer {
-    background-color:#1f1f1f;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-}
-
-footer p {
+  }
+  
+  .stat img {
+    width: 60px;
     margin-bottom: 10px;
-}
-
-footer .social-links img {
-    width: 30px;
-    margin: 0 10px;
-    cursor: pointer;
-    border-radius: 25%;
-    border: 1px solid white;
-    transition: transform 0.3s;
-}
-
-footer .social-links img:hover {
-    transform: scale(1.1); /* Zoom effect on hover */
-}
-
-footer a {
-    color: white;
-    text-decoration: none;
-}
+  }
+  
+  .stat h3 {
+    font-size: 1.8rem;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #0d0d0d;
+    color: #ccc;
+    text-align: center;
+    padding: 20px;
+    border-top: 3px solid #2196f3;
+  }
+  
+  footer a {
+    color: #ffcc00;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .content-pair {
+      flex-direction: column !important;
+    }
+  
+    nav {
+      justify-content: center;
+    }
+  }
+  

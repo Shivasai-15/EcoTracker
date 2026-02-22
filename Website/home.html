@@ -1,220 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eco Mines</title>
-    <style>
-        /* General Styles */
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #000; /* Black background */
-            color: #fff;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eco Mines</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+      color: #fff;
+    }
 
-        /* Header Styles */
-        header {
-            background-color: #1c1c1c; /* Dark gray */
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 4px solid #00bcd4; /* Orange accent */
-        }
+    header {
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        header h1 {
-            margin: 0;
-            font-size: 2rem;
-            color:#00bcd4; /* Orange text */
-        }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #fff;
+    }
 
-        nav {
-            display: flex;
-            gap: 15px;
-        }
+    nav {
+      display: flex;
+      gap: 15px;
+    }
 
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
 
-        nav a:hover {
-            background-color: #00bcd4; /* Orange hover */
-            color: #000;
-        }
+    nav a:hover {
+      background-color: #fff;
+      color: #2a5298;
+    }
 
-        /* Hero Section */
-        #hero {
-            text-align: center;
-            padding: 100px 20px;
-            background: #1c1c1c; /* Green to Blue gradient */
-            color: #fff;
-        }
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
 
-        #hero h2 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
+    #hero {
+      background: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb") center/cover no-repeat;
+      color: #fff;
+      text-shadow: 2px 2px 6px #000;
+      padding: 100px 20px;
+    }
 
-        #hero p {
-            font-size: 1.3rem;
-        }
+    #hero h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
 
-        /* Section Styles */
-        section {
-            padding: 40px 20px;
-            text-align: center;
-            margin-bottom: 10px;
-        }
+    #hero p {
+      font-size: 1.5rem;
+    }
 
-        section:nth-child(even) {
-            background-color: #1c1c1c; /* Dark gray */
-        }
+    #impact, #statistics, #solutions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+    }
 
-        section:nth-child(odd) {
-            background-color: #2e2e2e; /* Slightly lighter gray */
-        }
+    .text-block, .image-block {
+      flex: 1 1 400px;
+      max-width: 600px;
+    }
 
-        section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #ff9800; /* Orange heading */
-        }
+    .text-block h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #ffd700;
+    }
 
-        section p, section ul, section ol {
-            font-size: 1.2rem;
-            color: #d4f4dd; /* Soft green */
-        }
+    .text-block p, .text-block ul, .text-block ol {
+      font-size: 1.2rem;
+      color: #f0f8ff;
+    }
 
-        ul, ol {
-            text-align: left;
-            margin: 20px auto;
-            max-width: 800px;
-            color: #e0e0e0; /* Light gray for lists */
-        }
+    .text-block ul, .text-block ol {
+      text-align: left;
+    }
 
-        li {
-            margin-bottom: 10px;
-        }
+    .image-block img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+    }
 
-        /* Statistics Section */
-        #statistics .stats {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
 
-        .stat {
-            background: linear-gradient(45deg, #ff9800, #f44336); /* Orange to Red gradient */
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            color: #fff;
-            flex: 1 1 30%;
-        }
+    .stat {
+      background: linear-gradient(135deg, #43cea2, #185a9d);
+      padding: 20px;
+      border-radius: 12px;
+      flex: 1 1 250px;
+      color: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+      text-align: center;
+    }
 
-        .stat h3 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
+    .stat img {
+      width: 60px;
+      margin-bottom: 10px;
+    }
 
-        /* Footer */
-        footer {
-            background-color: #1c1c1c;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            border-top: 4px solid #2196f3; /* Blue top border */
-        }
+    .stat h3 {
+      font-size: 1.8rem;
+    }
 
-        footer a {
-            color: #ff9800;
-            text-decoration: none;
-        }
+    footer {
+      background-color: #0d0d0d;
+      color: #ccc;
+      text-align: center;
+      padding: 20px;
+      border-top: 3px solid #2196f3;
+    }
 
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    footer a {
+      color: #ffcc00;
+    }
+
+    @media (max-width: 768px) {
+      #impact, #statistics, #solutions {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <h1>Eco Mines</h1>
-        <nav>
-            <a href="#">Home</a>
-            <a href="AboutUs.html">About Us</a>
-            <a href="Eco.html">Data Input</a>
-            <a href="#">Analytics</a>
-            <a href="ContactUs.html">Contact Us</a>
-            <a href="login.html" id="login-btn">Login</a>
-        </nav>
-    </header>
+  <header>
+    <h1>Eco Mines</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="AboutUs.html">About Us</a>
+      <a href="Eco.html">Data Input</a>
+      <a href="#">Analytics</a>
+      <a href="ContactUs.html">Contact Us</a>
+      <a href="login.html" id="login-btn">Login</a>
+    </nav>
+  </header>
 
-    <!-- Hero Section -->
-    <section id="hero">
-        <h2>Protecting the Environment in Coal Mines</h2>
-        <p>Discover how eco-friendly practices are reducing carbon emissions in mining operations.</p>
-    </section>
+  <section id="hero">
+    <h2>Protecting the Environment in Coal Mines</h2>
+    <p>Eco-friendly solutions for a greener mining future.</p>
+  </section>
 
-    <!-- Environmental Impact Section -->
-    <section id="impact">
-        <h2>Environmental Impact</h2>
-        <p>Coal mines release large amounts of CO₂, methane (CH₄), and other greenhouse gases into the atmosphere, contributing significantly to global warming.</p>
+  <section style="background: linear-gradient(to right, #2c3e50, #4ca1af);">
+    <div id="impact">
+      <div class="text-block">
+        <h2>🌍 Environmental Impact</h2>
+        <p>Coal mining operations release large volumes of greenhouse gases and pollutants into the atmosphere.</p>
         <ul>
-            <li><strong>CO₂ Emissions:</strong> Millions of tons per year</li>
-            <li><strong>CH₄ Releases:</strong> Methane is 25 times more potent than CO₂</li>
-            <li><strong>Air and Water Pollution:</strong> Toxic chemicals affecting ecosystems</li>
+          <li><strong>CO₂ Emissions:</strong> Millions of tons yearly</li>
+          <li><strong>Methane (CH₄):</strong> 25× more potent than CO₂</li>
+          <li><strong>Pollution:</strong> Air and water contamination damages ecosystems</li>
         </ul>
-    </section>
+  </section>
 
-    <!-- Statistics Section -->
-    <section id="statistics">
-        <h2>Key Statistics</h2>
-        <div class="stats">
-            <div class="stat">
-                <h3>10 Billion Tons</h3>
-                <p>CO₂ Emissions Worldwide</p>
-            </div>
-            <div class="stat">
-                <h3>25%</h3>
-                <p>Percentage of Global Methane Emissions</p>
-            </div>
-            <div class="stat">
-                <h3>100,000+</h3>
-                <p>Number of Coal Mines Operating Worldwide</p>
-            </div>
+  <section style="background: linear-gradient(to right, #8e44ad, #3498db);">
+    <div>
+      <h2 style="color: #fff;">📊 Key Statistics</h2>
+      <div class="stats">
+        <div class="stat">
+          <img src="https://cdn-icons-png.flaticon.com/512/727/727803.png" alt="CO2 Icon">
+          <h3>10B Tons</h3>
+          <p>Annual CO₂ Emissions</p>
         </div>
-    </section>
+        <div class="stat">
+          <img src="https://img.icons8.com/emoji/96/fire.png" alt="Methane Icon">
+          <h3>25%</h3>
+          <p>Global Methane from Mining</p>
+        </div>
+        <div class="stat">
+          <img src="https://cdn-icons-png.flaticon.com/512/3476/3476213.png" alt="Mines Icon">
+          <h3>100,000+</h3>
+          <p>Active Coal Mines</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Solutions Section -->
-    <section id="solutions">
-        <h2>Solutions to Reduce Carbon Emissions</h2>
-        <p>Here are some actionable solutions to mitigate carbon emissions in coal mines.</p>
+  <section style="background: linear-gradient(to right, #00c9ff, #92fe9d); color: #000;">
+    <div id="solutions">
+      <div class="image-block">
+        <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231" alt="Green solutions">
+      </div>
+      <div class="text-block">
+        <h2>🌱 Solutions to Reduce Emissions</h2>
         <ol>
-            <li><strong>Carbon Capture Technology:</strong> Capturing CO₂ emissions directly at the source.</li>
-            <li><strong>Renewable Energy Integration:</strong> Replacing coal-powered operations with solar or wind energy.</li>
-            <li><strong>Improved Mining Practices:</strong> Sustainable mining operations with reduced environmental footprint.</li>
+          <li><strong>Carbon Capture:</strong> Trap CO₂ before it enters the atmosphere</li>
+          <li><strong>Renewable Energy:</strong> Use solar and wind to power operations</li>
+          <li><strong>Sustainable Mining:</strong> Eco-conscious tech and land rehabilitation</li>
         </ol>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2023 Eco Mines. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
-    </footer>
-    <script>
-        // Check if user is already logged in
-        if (sessionStorage.getItem('isLoggedIn')) {
-            const loginBtn = document.getElementById('login-btn');
-            if (loginBtn) loginBtn.remove(); // Remove login button if logged in
-        }
-    </script>
+  <footer>
+    <p>&copy; 2023 Eco Mines. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+  </footer>
+
+  <script>
+    if (sessionStorage.getItem('isLoggedIn')) {
+      const loginBtn = document.getElementById('login-btn');
+      if (loginBtn) loginBtn.remove();
+    }
+  </script>
 </body>
 </html>

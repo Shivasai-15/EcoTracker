@@ -1,172 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eco Trackers</title>
-    <style>
-        /* General styling */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #e0e0e0;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - Eco Mines</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
 
-        /* Navbar styling (same as homepage) */
-        header {
-            background-color: #1c1c1c; /* Dark gray */
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 4px solid #00bcd4; /* Orange accent */
-        }
+    header {
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        header h1 {
-            margin: 0;
-            font-size: 2rem;
-            color: #00bcd4; /* Orange text */
-        }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #fff;
+    }
 
-        nav {
-            display: flex;
-            gap: 15px;
-        }
+    nav {
+      display: flex;
+      gap: 15px;
+    }
 
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
 
-        nav a:hover {
-            background-color: #00bcd4; /* Orange hover */
-            color: #000;
-        }
+    nav a:hover,
+    nav a.active {
+      background-color: #fff;
+      color: #2a5298;
+    }
 
-        /* Content Styling */
-        .container-custom {
-            background-color: #1f1f1f;
-            border-radius: 8px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            margin: 20px;
-        }
+    .container {
+      padding: 60px 20px;
+      background: linear-gradient(to right, #2c3e50, #4ca1af);
+    }
 
-        h3,
-        h4 {
-            color: #76c7c0;
-        }
+    .card {
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+      margin: 20px auto;
+      padding: 30px;
+      max-width: 800px;
+      transition: transform 0.3s ease;
+    }
 
-        li {
-            font-size: medium;
-            line-height: 1.5;
-            font-weight: bold;
-            color: #d1d1d1;
-        }
+    .card:hover {
+      transform: scale(1.02);
+    }
 
-        .featurette img {
-            border: 2px solid #76c7c0;
-            border-radius: 5px;
-        }
+    h2 {
+      font-size: 2rem;
+      color: #ffd700;
+      margin-bottom: 10px;
+    }
 
-        /* Footer styling */
-        footer {
-            background-color: #1a1a1a;
-            color: #98e6dc;
-            text-align: center;
-            padding: 10px;
-            margin-top: 20px;
-        }
+    h3 {
+      color: #76c7c0;
+      margin-bottom: 15px;
+    }
 
-        footer a {
-            color: #76c7c0;
-            text-decoration: none;
-        }
+    ul {
+      padding-left: 20px;
+      list-style: square;
+    }
 
-        footer a:hover {
-            text-decoration: underline;
-        }
+    li {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: #f0f8ff;
+    }
 
-        /* Button Styling */
-        .btn {
-            background-color: #76c7c0;
-            color: #121212;
-            border: none;
-        }
+    footer {
+      background-color: #0d0d0d;
+      color: #ccc;
+      text-align: center;
+      padding: 20px;
+      border-top: 3px solid #2196f3;
+    }
 
-        .btn:hover {
-            background-color: #98e6dc;
-            color: #121212;
-        }
-    </style>
+    footer a {
+      color: #ffcc00;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .card {
+        padding: 20px;
+        margin: 10px;
+      }
+
+      li {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
-
 <body>
-    <!-- Navbar (Same as homepage) -->
-    <header>
-        <h1>Eco Mines</h1>
-        <nav>
-            <a href="home.html">Home</a>
-            <a href="AboutUs.html">About us</a>
-            <a href="Eco.html">Data Input</a>
-            <a href="ContactUs.html">Contact us</a>
-        </nav>
-    </header>
+  <header>
+    <h1>Eco Mines</h1>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="AboutUs.html" class="active">About Us</a>
+      <a href="Eco.html">Data Input</a>
+      <a href="ContactUs.html">Contact Us</a>
+    </nav>
+  </header>
 
-    <!-- Main Content -->
-    <div class="container-custom">
-        <div class="featurette">
-            <h3>About Eco Trackers</h3>
-            <h4>Key Details</h4>
-            <ul>
-                <li>The motivation is to quantify carbon footprints and explore pathways to carbon neutrality for Indian coal mines.</li>
-                <li>Founded by a passionate team of environmentalists, technologists, and industry experts who recognized the urgent need for change in the mining sector.</li>
-                <li>Combines experience in environmental science, data analytics, and mining operations to address unique challenges.</li>
-            </ul>
-        </div>
-        <div class="featurette">
-            <h3>Our Mission</h3>
-            <ul>
-                <li>Estimate Carbon Emissions</li>
-                <li>Carbon Sink Estimation</li>
-                <li>Data Visualization</li>
-                <li>Carbon Neutrality Pathways</li>
-            </ul>
-        </div>
-        <div class="featurette">
-            <h3>Our Vision</h3>
-            <ul>
-                <li>Promoting Environmental Sustainability</li>
-                <li>Empowering Stakeholders</li>
-                <li>Fostering Community Engagement</li>
-                <li>Driving Economic Efficiency</li>
-            </ul>
-        </div>
+  <section class="container">
+    <div class="card">
+      <h2>🌿 About Eco Trackers</h2>
+      <h3>Key Details</h3>
+      <ul>
+        <li>Motivated to quantify carbon footprints and promote neutrality in Indian coal mines.</li>
+        <li>Founded by experts in environmentalism, tech, and mining.</li>
+        <li>Blending science, analytics, and operations for a sustainable future.</li>
+      </ul>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2023 Eco Mines. All rights reserved. <a href="#">Privacy</a> · <a href="#">Terms</a></p>
-        <a href="#">Back to top</a>
-    </footer>
+    <div class="card">
+      <h2>🎯 Our Mission</h2>
+      <ul>
+        <li>Estimate Carbon Emissions</li>
+        <li>Carbon Sink Estimation</li>
+        <li>Data Visualization</li>
+        <li>Carbon Neutrality Pathways</li>
+      </ul>
+    </div>
 
-    <!-- JavaScript -->
-    <script>
-        // Smooth scroll to top functionality
-        document.querySelector('footer a').addEventListener('click', function (event) {
-            event.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    </script>
+    <div class="card">
+      <h2>🌏 Our Vision</h2>
+      <ul>
+        <li>Promoting Environmental Sustainability</li>
+        <li>Empowering Stakeholders</li>
+        <li>Fostering Community Engagement</li>
+        <li>Driving Economic Efficiency</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2023 Eco Mines. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+    <a href="#">Back to top</a>
+  </footer>
+
+  <script>
+    document.querySelector('footer a').addEventListener('click', function (event) {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 </body>
-
 </html>

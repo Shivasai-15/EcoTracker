@@ -19,9 +19,9 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'Website')));
 
 // Route to serve test.html
-//app.get('/test', (req, res) => {
-//    res.sendFile(path.join(__dirname, 'Website', 'test.html'));
-//});
+app.get('/test', (req, res) => {
+    res.sendFile(path.join(__dirname, 'Website', 'test.html'));
+});
 
 // Route to serve Eco.html
 app.get('/Eco', (req, res) => {
