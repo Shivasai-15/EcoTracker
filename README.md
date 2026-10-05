@@ -49,6 +49,3 @@ Go to:
 ```text
 http://localhost:3000
 ```
-
-
-GitHub: https://github.com/Shivasai-15
